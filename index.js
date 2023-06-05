@@ -15,6 +15,9 @@ mongoose.connect(process.env.MONGO_URI, {
 
 mongoose.connection.on("connected", () => {
   console.log("Connected to MongoDB");
+  app.listen(PORT, () => {
+  console.log(`Server started on port ${PORT}`);
+});
 });
 
 mongoose.connection.on("error", (err) => {
@@ -172,6 +175,4 @@ app.delete("/api/contacts/:id", authenticateToken, async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server started on port ${PORT}`);
-});
+
